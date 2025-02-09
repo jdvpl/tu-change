@@ -1,0 +1,13 @@
+services:
+  orders-db:
+    container_name: alunmos_db
+    image: postgres:17.2
+    restart: always
+    volumes:
+    - ./back-end/postgres:/var/lib/postgresql/data
+    ports:
+    - 5435:5432
+    environment:
+      POSTGRES_USER: tuchance
+      POSTGRES_PASSWORD: tuchance123
+      POSTGRES_DB: alunmos_db
