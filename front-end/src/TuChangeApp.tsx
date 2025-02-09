@@ -1,5 +1,5 @@
 import { RouterProvider } from "react-router-dom"
-import { router } from "./presentation/router/router"
+import { router } from "./shared/router/router"
 
 const TuChangeApp = () => {
   return (
