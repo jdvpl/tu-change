@@ -1,6 +1,9 @@
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { StudentInterface } from './student.interface';
-import { CreateStudentRequestDto } from 'src/students/services/dto/create-student.request.dto';
+import {
+  CreateGradeDto,
+  CreateStudentRequestDto,
+} from '../../services/dto/create-student.request.dto';
 import { StudentRepoInterface } from '../../repository/student.repo.interface';
 import { StudentEntity } from 'src/students/repository/entities/student.entity';
 import { PaginationDto } from 'src/common/dto/pagination.dto';
@@ -36,5 +39,9 @@ export class StudentImplementation implements StudentInterface {
 
   getAllStudents(query: PaginationDto) {
     return this.studentRepoImp.getAllStudents(query);
+  }
+
+  createGrade(body: CreateGradeDto) {
+    return this.studentRepoImp.createGrade(body);
   }
 }

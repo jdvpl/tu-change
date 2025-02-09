@@ -22,3 +22,9 @@ export class StudentEntity {
   @IsDate()
   admisiontDate: Date;
 }
+
+export class GradeEntity {
+  grade: number;
+  section: string;
+  id: number;
+}

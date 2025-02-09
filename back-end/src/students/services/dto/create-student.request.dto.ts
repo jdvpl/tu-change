@@ -7,7 +7,17 @@ import {
   Min,
 } from 'class-validator';
 
-export class CreateStudentRequestDto {
+export class CreateGradeDto {
+  @IsNumber()
+  @IsPositive()
+  @Min(1)
+  @Max(12)
+  grade: number;
+
+  @IsString()
+  section: string;
+}
+export class CreateStudentRequestDto extends CreateGradeDto {
   @IsString()
   studentName: string;
 
@@ -19,15 +29,6 @@ export class CreateStudentRequestDto {
 
   @IsString()
   motherName: string;
-
-  @IsNumber()
-  @IsPositive()
-  @Min(1)
-  @Max(12)
-  grade: number;
-
-  @IsString()
-  section: string;
 
   @IsDateString()
   admisiontDate: string;

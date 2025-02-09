@@ -7,9 +7,10 @@ import {
 } from '@nestjs/common';
 import { PrismaClient } from '@prisma/client';
 import { StudentRepoInterface } from './student.repo.interface';
-import { StudentEntity } from './entities/student.entity';
+import { GradeEntity, StudentEntity } from './entities/student.entity';
 import { PaginationDto } from 'src/common/dto/pagination.dto';
 import { convertDate } from 'src/helpers/convertDate';
+import { CreateGradeDto } from '../services/dto/create-student.request.dto';
 
 @Injectable()
 export class StudentRepoImplementation
@@ -139,5 +140,31 @@ export class StudentRepoImplementation
       perPage,
       lastPage: Math.ceil(totalStudents / perPage),
     };
+  }
+  async createGrade(body: CreateGradeDto): Promise<GradeEntity> {
+    try {
+      const gradeExist = await this.grade.findUnique({
+        where: { code_section: { code: body.grade, section: body.section } },
+      });
+      if (gradeExist) {
+        throw new HttpException(
+          `Grade ${body.grade} ${body.section} already exists`,
+          HttpStatus.BAD_REQUEST,
+        );
+      }
+      const grade = await this.grade.create({
+        data: {
+          code: body.grade,
+          section: body.section,
+        },
+      });
+      return grade as unknown as GradeEntity;
+    } catch (error) {
+      console.log(error);
+      throw new HttpException(
+        error.message,
+        error.status || HttpStatus.INTERNAL_SERVER_ERROR,
+      );
+    }
   }
 }

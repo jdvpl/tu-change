@@ -7,7 +7,10 @@ import {
   Query,
   ParseIntPipe,
 } from '@nestjs/common';
-import { CreateStudentRequestDto } from '../dto/create-student.request.dto';
+import {
+  CreateGradeDto,
+  CreateStudentRequestDto,
+} from '../dto/create-student.request.dto';
 import { StudentInterface } from 'src/students/application/use-cases/student.interface';
 import { PaginationDto } from 'src/common/dto/pagination.dto';
 
@@ -31,8 +34,8 @@ export class StudentsController {
   async getAllStudens(@Query() query: PaginationDto) {
     return this.studentsService.getAllStudents(query);
   }
-  @Get('create-grade')
-  async createGrade(@Query() query: PaginationDto) {
-    return this.studentsService.getAllStudents(query);
+  @Post('create-grade')
+  async createGrade(@Body() body: CreateGradeDto) {
+    return this.studentsService.createGrade(body);
   }
 }
