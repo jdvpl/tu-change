@@ -6,6 +6,7 @@ import {
   Param,
   UseGuards,
   Query,
+  ParseIntPipe,
 } from '@nestjs/common';
 import { ApiKeyGuard } from 'src/guards/api-key.guard';
 import { CreateStudentRequestDto } from '../dto/create-student.request.dto';
@@ -25,7 +26,7 @@ export class StudentsController {
   @UseGuards(ApiKeyGuard)
   @Get('consultar-alumno/:grade/:section?')
   async getStudents(
-    @Param('grade') grade: string,
+    @Param('grade', ParseIntPipe) grade: number,
     @Param('section') section?: string,
   ) {
     return this.studentsService.getStudentsByGrade(grade, section);
@@ -33,6 +34,11 @@ export class StudentsController {
   @UseGuards(ApiKeyGuard)
   @Get('get-all')
   async getAllStudens(@Query() query: PaginationDto) {
+    return this.studentsService.getAllStudents(query);
+  }
+  @UseGuards(ApiKeyGuard)
+  @Get('create-grade')
+  async createGrade(@Query() query: PaginationDto) {
     return this.studentsService.getAllStudents(query);
   }
 }

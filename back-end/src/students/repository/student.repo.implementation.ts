@@ -22,7 +22,7 @@ export class StudentRepoImplementation
     await this.$connect();
     this.logger.log('Connected to the database');
   }
-  async createStudent(student: StudentEntity): Promise<any> {
+  async createStudent(student: StudentEntity): Promise<StudentEntity> {
     try {
       const studentInserted = await this.student.create({
         data: {
@@ -57,7 +57,7 @@ export class StudentRepoImplementation
         admissionDate: convertDate(studentInserted.admissionDate),
         grade: undefined,
       };
-      return formattedResponse;
+      return formattedResponse as unknown as StudentEntity;
     } catch (error) {
       throw new HttpException(
         `Error setting data: ${error.message}`,
@@ -65,7 +65,10 @@ export class StudentRepoImplementation
       );
     }
   }
-  async getStudentByGrade(studentId: string, section?: string): Promise<any> {
+  async getStudentByGrade(
+    studentId: number,
+    section?: string,
+  ): Promise<StudentEntity[]> {
     try {
       const data = await this.student.findMany({
         where: {
@@ -97,7 +100,7 @@ export class StudentRepoImplementation
         gradeSection: student.grade.section,
         grade: undefined,
       }));
-      return formattedData;
+      return formattedData as unknown as StudentEntity[];
     } catch (error) {
       throw new HttpException(error.message, HttpStatus.BAD_REQUEST);
     }

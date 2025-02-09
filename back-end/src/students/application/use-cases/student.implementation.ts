@@ -30,8 +30,8 @@ export class StudentImplementation implements StudentInterface {
       );
     }
   }
-  getStudentsByGrade(body: string, section?: string) {
-    return this.studentRepoImp.getStudentByGrade(body, section);
+  getStudentsByGrade(code: number, section?: string) {
+    return this.studentRepoImp.getStudentByGrade(code, section);
   }
 
   getAllStudents(query: PaginationDto) {

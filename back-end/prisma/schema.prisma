@@ -30,7 +30,7 @@ model student {
 
 model grade {
   id       Int       @id @default(autoincrement())
-  code     String    
+  code     Int    
   section  String
   students student[]
   @@unique([code, section])

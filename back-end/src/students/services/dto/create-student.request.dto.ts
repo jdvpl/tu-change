@@ -1,4 +1,11 @@
-import { IsDateString, IsString } from 'class-validator';
+import {
+  IsDateString,
+  IsNumber,
+  IsPositive,
+  IsString,
+  Max,
+  Min,
+} from 'class-validator';
 
 export class CreateStudentRequestDto {
   @IsString()
@@ -13,8 +20,11 @@ export class CreateStudentRequestDto {
   @IsString()
   motherName: string;
 
-  @IsString()
-  grade: string;
+  @IsNumber()
+  @IsPositive()
+  @Min(1)
+  @Max(12)
+  grade: number;
 
   @IsString()
   section: string;

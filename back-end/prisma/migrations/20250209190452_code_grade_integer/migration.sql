@@ -16,7 +16,7 @@ CREATE TABLE "student" (
 -- CreateTable
 CREATE TABLE "grade" (
     "id" SERIAL NOT NULL,
-    "code" TEXT NOT NULL,
+    "code" INTEGER NOT NULL,
     "section" TEXT NOT NULL,
 
     CONSTRAINT "grade_pkey" PRIMARY KEY ("id")
@@ -26,7 +26,7 @@ CREATE TABLE "grade" (
 CREATE INDEX "student_gradeId_idx" ON "student"("gradeId");
 
 -- CreateIndex
-CREATE UNIQUE INDEX "grade_code_key" ON "grade"("code");
+CREATE UNIQUE INDEX "grade_code_section_key" ON "grade"("code", "section");
 
 -- AddForeignKey
 ALTER TABLE "student" ADD CONSTRAINT "student_gradeId_fkey" FOREIGN KEY ("gradeId") REFERENCES "grade"("id") ON DELETE RESTRICT ON UPDATE CASCADE;

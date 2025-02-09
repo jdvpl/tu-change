@@ -5,6 +5,9 @@ import { PaginationDto } from '../../common/dto/pagination.dto';
 @Injectable()
 export abstract class StudentRepoInterface {
   abstract createStudent(student: StudentEntity): Promise<any>;
-  abstract getStudentByGrade(studentId: string, section?: string): Promise<any>;
+  abstract getStudentByGrade(
+    studentId: number,
+    section?: string,
+  ): Promise<StudentEntity[]>;
   abstract getAllStudents(pageDto: PaginationDto): Promise<StudentEntity[]>;
 }

@@ -6,6 +6,6 @@ import { StudentEntity } from 'src/students/repository/entities/student.entity';
 @Injectable()
 export abstract class StudentInterface {
   abstract createStudent(body: CreateStudentRequestDto);
-  abstract getStudentsByGrade(code: string, section?: string);
+  abstract getStudentsByGrade(code: number, section?: string);
   abstract getAllStudents(query: PaginationDto): Promise<StudentEntity[]>;
 }

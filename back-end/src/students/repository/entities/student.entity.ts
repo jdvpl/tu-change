@@ -1,4 +1,4 @@
-import { IsDate, IsString } from 'class-validator';
+import { IsDate, IsNumber, IsString } from 'class-validator';
 
 export class StudentEntity {
   @IsString()
@@ -13,8 +13,8 @@ export class StudentEntity {
   @IsString()
   motherName: string;
 
-  @IsString()
-  grade: string;
+  @IsNumber()
+  grade: number;
 
   @IsString()
   section: string;
