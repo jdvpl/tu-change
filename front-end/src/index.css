@@ -2,9 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
+.select-container button i {
+  color: #89a3b5 !important;
+}
 
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+.select-container input {
+  cursor: pointer !important;
+}
+
+.label-with-value label {
+  color: #496374 !important;
 }
