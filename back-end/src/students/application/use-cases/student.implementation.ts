@@ -7,6 +7,7 @@ import {
 import { StudentRepoInterface } from '../../repository/student.repo.interface';
 import { StudentEntity } from 'src/students/repository/entities/student.entity';
 import { PaginationDto } from 'src/common/dto/pagination.dto';
+import JsonData from '../../../common/db/seed.json';
 
 @Injectable()
 export class StudentImplementation implements StudentInterface {
@@ -43,5 +44,18 @@ export class StudentImplementation implements StudentInterface {
 
   createGrade(body: CreateGradeDto) {
     return this.studentRepoImp.createGrade(body);
+  }
+  getAllGrades(): Promise<CreateGradeDto[]> {
+    return this.studentRepoImp.getAllGrades();
+  }
+  seed() {
+    try {
+      return this.studentRepoImp.seed(JsonData as unknown as StudentEntity[]);
+    } catch (error) {
+      throw new HttpException(
+        `Error seeding data: ${error.message}`,
+        HttpStatus.BAD_REQUEST,
+      );
+    }
   }
 }

@@ -12,4 +12,6 @@ export abstract class StudentInterface {
   abstract getStudentsByGrade(code: number, section?: string);
   abstract getAllStudents(query: PaginationDto): Promise<StudentEntity[]>;
   abstract createGrade(body: CreateGradeDto);
+  abstract getAllGrades(): Promise<CreateGradeDto[]>;
+  abstract seed();
 }

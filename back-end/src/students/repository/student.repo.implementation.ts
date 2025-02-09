@@ -167,4 +167,41 @@ export class StudentRepoImplementation
       );
     }
   }
+  async getAllGrades(): Promise<GradeEntity[]> {
+    const data = await this.grade.findMany();
+    return data as unknown as GradeEntity[];
+  }
+
+  async seed(data: StudentEntity[]): Promise<{ data: string }> {
+    try {
+      await this.$transaction(
+        data.map((student) =>
+          this.student.create({
+            data: {
+              studentName: student.studentName,
+              birthDate: new Date(student.birthDate),
+              motherName: student.motherName,
+              fatherName: student.fatherName,
+              admissionDate: new Date(student.admisiontDate),
+              grade: {
+                connectOrCreate: {
+                  where: {
+                    code_section: {
+                      code: +student.grade,
+                      section: student.section,
+                    },
+                  },
+                  create: { code: +student.grade, section: student.section },
+                },
+              },
+            },
+          }),
+        ),
+      );
+
+      return { data: 'Data seeded successfully' };
+    } catch (error) {
+      throw new HttpException(error.message, HttpStatus.BAD_REQUEST);
+    }
+  }
 }

@@ -38,4 +38,13 @@ export class StudentsController {
   async createGrade(@Body() body: CreateGradeDto) {
     return this.studentsService.createGrade(body);
   }
+  @Get('get-all-grades')
+  async getAllGrades() {
+    return this.studentsService.getAllGrades();
+  }
+
+  @Post('seed')
+  async seed() {
+    return this.studentsService.seed();
+  }
 }

@@ -12,4 +12,6 @@ export abstract class StudentRepoInterface {
   ): Promise<StudentEntity[]>;
   abstract getAllStudents(pageDto: PaginationDto): Promise<StudentEntity[]>;
   abstract createGrade(body: CreateGradeDto): Promise<GradeEntity>;
+  abstract getAllGrades(): Promise<GradeEntity[]>;
+  abstract seed(data: StudentEntity[]): Promise<{ data: string }>;
 }
