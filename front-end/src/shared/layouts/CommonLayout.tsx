@@ -6,7 +6,10 @@ const CommonLayout = () => {
   return (
     <main className="flex flex-row py-7 bg-gray-50-50 m-0 p-0 overflow-x-hidden" >
     <nav className="hidden sm:flex flex-col ml-5 w-[370px] min-h-[calc(100vh-3.0rem)] bg-gray-400 bg-opacity-10 p-5 rounded-3xl">
-      <span className="text-xl">Bienvenido</span>
+    <span className="text-xl bg-gradient-to-r from-teal-600 to-red-600 text-transparent bg-clip-text">
+  TuChance-Alumnos
+</span>
+
 
       <div className="border-gray-700 border my-3 mt-2" />
 

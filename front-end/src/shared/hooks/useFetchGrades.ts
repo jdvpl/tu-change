@@ -6,10 +6,13 @@ import { ENDPOINTS } from "../../services/endpoints";
 export default function useFetchGrades() {
   const [grades, setGrades] = useState<number[]>([]);
   const [sections, setSections] = useState<string[]>([]);
+  const [gradesSections, setGradesSections] = useState<GradeSection[]>([]);
 
   const getGrades = async () => {
     try {
       const { data } = await ApiService.request<GradeSection[],null>('get', ENDPOINTS.getAllGrades)
+
+      setGradesSections(data);
       const uniqueCodes = [...new Set(data.flatMap(item => Number(item.code)))].sort((a, b) => a - b);
       const uniqueSections = [...new Set(data.flatMap(item => item.section))].sort();
       setGrades(uniqueCodes);
@@ -23,5 +26,5 @@ export default function useFetchGrades() {
     getGrades()
   }, []);
 
-  return { grades, sections,  };
+  return { grades, sections,gradesSections  };
 }
