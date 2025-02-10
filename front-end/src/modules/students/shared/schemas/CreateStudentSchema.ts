@@ -8,5 +8,5 @@ export const CREATE_SCHMEMA_VALIDATION = object({
   motherName: string().required(),
   grade: string().required(),
   section: string().required(),
-  admisiontDate: string().required(),
+  admissionDate: string().required(),
 })

@@ -31,7 +31,7 @@ export class CreateStudentRequestDto extends CreateGradeDto {
   motherName: string;
 
   @IsDateString()
-  admisiontDate: string;
+  admissionDate: string;
 }
 
 export class GetStudentRequestDto {

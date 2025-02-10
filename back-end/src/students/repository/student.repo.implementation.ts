@@ -117,6 +117,7 @@ export class StudentRepoImplementation
       select: {
         studentName: true,
         birthDate: true,
+        id: true,
         motherName: true,
         fatherName: true,
         admissionDate: true,

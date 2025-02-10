@@ -23,29 +23,28 @@ const CreateStudenForm = ({ setOpen }: CreateStudenFormProps) => {
     resolver: yupResolver(CREATE_SCHMEMA_VALIDATION),
   });
 
-  const onSubmit = async(event:React.FormEvent) => {
+  const onSubmit = async (event: React.FormEvent) => {
     event.preventDefault()
     try {
-      const data=getValues()
-      const datatoSend= {...data,grade:parseInt(data.grade)}
-    await createUser(datatoSend);
-  } catch (error) {
-    console.log(error);
-  }
-    console.log(getValues());
+      const data = getValues()
+      const datatoSend = { ...data, grade: parseInt(data.grade) }
+      await createUser(datatoSend);
+      setOpen(false)
+    } catch (error) {
+      console.log(error);
+    }
   }
   const { grades, sections } = useFetchGrades()
   return (
     <div className='bg-white p-3 rounded-md border border-gray-200 w-full md:w-[70%] relative'>
-
       <div className="flex justify-end absolute top-2 right-2">
         <button onClick={() => setOpen(false)}>
-          <XCircleIcon className="size-10 text-gray-600" title="cerrar" />
+          <XCircleIcon className="size-8 text-blue-600" title="cerrar" />
         </button>
       </div>
       <h2 className='text-center font-semibold text-3xl mt-3'>Crear Alumno</h2>
 
-      <form onSubmit={onSubmit} className="lg:w-1/2 mx-auto flex flex-col px-4 gap-3  mt-5">
+      <form onSubmit={onSubmit} className="lg:w-1/2 mx-auto flex flex-col px-4 gap-3 py-5 mt-5">
         <Input
           placeholder="Nombre del estudiante"
           value={watch('studentName')}
@@ -113,11 +112,10 @@ const CreateStudenForm = ({ setOpen }: CreateStudenFormProps) => {
               shouldValidate: true,
             })
           }
-          placeholder="Section"
+          placeholder="Seccion"
           name="Section"
           helperText={errors?.grade?.message}
           error={!!errors?.grade}
-
         />
 
         <Input
@@ -136,17 +134,16 @@ const CreateStudenForm = ({ setOpen }: CreateStudenFormProps) => {
         <Input
           type="date"
           label="Fecha de admision"
-          value={watch('admisiontDate')}
-          helperText={errors?.admisiontDate?.message}
-          error={!!errors?.admisiontDate}
+          value={watch('admissionDate')}
+          helperText={errors?.admissionDate?.message}
+          error={!!errors?.admissionDate}
           name="admisiontDate"
           onChange={e =>
-            setValue('admisiontDate', e.target.value, {
+            setValue('admissionDate', e.target.value, {
               shouldValidate: true,
             })
           }
         />
-
         <button disabled={!isValid} className={`${!isValid ? 'bg-gray-300' : 'bg-blue-800'}  text-white rounded-md p-2 mt-3`} type="submit" >Crear alumno
 
         </button>

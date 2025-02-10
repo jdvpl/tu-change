@@ -30,21 +30,28 @@ function Input({
   type='text',
   ...props
 }: InputProps) {
-  const labelStyles = `z-[-10] text-gray-800 left-3
+  const labelStyles = `z-[-10] text-gray-900 left-3
   absolute top-[50%] translate-y-[-50%] text-[14px] leading-[16px]  transition-all duration-300 ease-in-out 
   ${props?.value ? 'peer-valid:left-2 peer-valid:top-0 peer-valid:text-[10px] peer-valid:leading-[12px] peer-valid:bg-white peer-valid:px-1 peer-valid:z-10' : ''}
   ${props?.readOnly && props?.value ? 'left-[6px] !top-[-1px] !text-[11px] leading-[12px] px-1 z-[90]' : ''}
-  ${props?.readOnly ? 'left-2 text-[14px] !text-gray-400leading-[12px] bg-white px-1 z-[120]' : 'peer-focus:left-2 peer-focus:top-0 peer-focus:text-[10px] peer-focus:leading-[12px] peer-focus:bg-white peer-focus:px-1 peer-focus:z-10'}`;
+  ${props?.readOnly ? 'left-2 text-[14px] !text-gray-400 leading-[12px] bg-white px-1 z-[120]' : 'peer-focus:left-2 peer-focus:top-0 peer-focus:text-[10px] peer-focus:leading-[12px] peer-focus:bg-white peer-focus:px-1 peer-focus:z-10'}`;
 
   const inputStyles = `pl-3 pr-3 peer appearance-none text-[14px] leading-[16px] 
   h-[48px] bg-transparent border-[1px] rounded-[8px] bg-[transparent] w-full
-  ${props?.readOnly ? '!border-gray-400 bg-white text-gray-700' : ''}
-  ${error ? 'border-red-200 hover:border-red-200 focus:border-red-200 ' : `${props?.readOnly && props?.value ? 'border-gray-400 bg-white !cursor-pointer' : 'border-gray-200 valid:text-blue-900 hover:border-blue-200 focus:border-blue-200 '}  `}
+  ${props?.readOnly ? '!border-gray-400 bg-white text-gray-900' : ''}
+  ${error ? 'border-red-200 hover:border-red-200 focus:border-red-200 ' : `${props?.readOnly && props?.value ? 'border-gray-400 bg-white !cursor-pointer' : 'border-gray-200 valid:text-black hover:border-blue-200 focus:border-blue-200 '}  `}
   peer-focus:border focus:outline-none`;
 
   return (
     <div className={`${containerClassName} justify-center flex flex-col w-full relative`}>
       <div className="relative z-0 w-full">
+      {
+            type==='date'&&(
+              <label htmlFor="floating_text" className="text-gray-500 flex justify-start">
+                {label}
+              </label>
+            )
+          }
         <input
           type={type}
           id="floating_text"
@@ -70,6 +77,8 @@ function Input({
               {rightIcon}
             </div>
           )}
+
+         
 
           {
             type !=='date'&&(

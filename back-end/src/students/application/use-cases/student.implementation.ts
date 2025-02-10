@@ -22,7 +22,7 @@ export class StudentImplementation implements StudentInterface {
         motherName: body.motherName,
         grade: body.grade,
         section: body.section,
-        admisiontDate: new Date(body.admisiontDate),
+        admisiontDate: new Date(body.admissionDate),
       };
       const student = await this.studentRepoImp.createStudent(bodyToInsert);
 
