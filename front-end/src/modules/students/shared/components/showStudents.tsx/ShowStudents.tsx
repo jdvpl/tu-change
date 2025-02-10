@@ -19,7 +19,7 @@ const ShowStudents = () => {
 
   return (
     <Suspense fallback={<p className="text-center text-gray-500">Cargando...</p>}>
-      <div className="md:max-w-4xl max-w-xs mx-auto ">
+      <div className="lg:max-w-4xl md:max-w-[400px] max-w-xs mx-auto ">
         <h2 className="text-2xl font-bold text-center mb-4">Lista de Estudiantes</h2>
 
         <p className="text-center text-gray-700 mb-4">
@@ -27,7 +27,7 @@ const ShowStudents = () => {
         </p>
 
         <div className="w-full overflow-x-auto bg-white shadow-md rounded-lg">
-          <table className="w-full overflow-x-auto md:min-w-[600px] text-sm text-left text-gray-600">
+          <table className="w-full overflow-x-auto text-sm text-left text-gray-600">
             <thead className="text-xs text-white uppercase bg-blue-600">
               <tr>
                 <th className="px-4 py-2">Nombre</th>

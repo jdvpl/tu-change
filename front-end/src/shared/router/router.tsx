@@ -2,6 +2,7 @@ import { createBrowserRouter, Navigate } from "react-router-dom";
 import Grades from "../../modules/grades/presentation/pages/grades/Grades";
 import CommonLayout from "../layouts/CommonLayout";
 import Students from "../../modules/students/presentation/pages/students/Students";
+import StudentsByGrade from "../../modules/students/presentation/pages/studentByGrade/StudentsByGrade";
 
 
 export const menuRoutes = [
@@ -16,6 +17,12 @@ export const menuRoutes = [
     title: "Grados",
     description: "Gestión de estudiantes",
     component: <Grades />
+  },
+  {
+    to: "/studiantes-by-grade",
+    title: "Estudiantes por grado",
+    description: "Gestión de estudiantes",
+    component: <StudentsByGrade />
   },
 ]
 

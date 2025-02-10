@@ -23,7 +23,6 @@ const useFetchStudents = ({page}:IUseFetchStudents) => {
     }
   };
   useEffect(() => {
-    console.log("🔄 Cambio de página detectado:", page);
     fetchStudents();
   }, [page]);
 

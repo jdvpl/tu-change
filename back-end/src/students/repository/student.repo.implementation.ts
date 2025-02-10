@@ -83,6 +83,7 @@ export class StudentRepoImplementation
           birthDate: true,
           motherName: true,
           fatherName: true,
+          id: true,
           admissionDate: true,
           grade: { select: { code: true, section: true } },
         },

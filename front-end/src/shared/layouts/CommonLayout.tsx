@@ -17,7 +17,7 @@ const CommonLayout = () => {
       }
     </nav>
 
-    <section className="mx-3 sm:mx-20 flex flex-col w-full h-full  bg-gray-500 bg-opacity-10 p-2 rounded-3xl">
+    <section className="mx-3 sm:mx-5 flex flex-col w-full h-full  bg-gray-500 bg-opacity-10 p-2 rounded-3xl">
       <div className="flex flex-row h-full">
         <div className="flex flex-col flex-auto h-full p-1">
           <Outlet />
