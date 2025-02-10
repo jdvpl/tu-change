@@ -170,7 +170,9 @@ export class StudentRepoImplementation
     }
   }
   async getAllGrades(): Promise<GradeEntity[]> {
-    const data = await this.grade.findMany();
+    const data = await this.grade.findMany({
+      orderBy: [{ code: 'asc' }, { section: 'asc' }],
+    });
     return data as unknown as GradeEntity[];
   }
 
