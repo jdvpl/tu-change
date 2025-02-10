@@ -83,6 +83,7 @@ export class StudentRepoImplementation
           birthDate: true,
           motherName: true,
           fatherName: true,
+          id: true,
           admissionDate: true,
           grade: { select: { code: true, section: true } },
         },
@@ -117,6 +118,7 @@ export class StudentRepoImplementation
       select: {
         studentName: true,
         birthDate: true,
+        id: true,
         motherName: true,
         fatherName: true,
         admissionDate: true,
@@ -168,7 +170,9 @@ export class StudentRepoImplementation
     }
   }
   async getAllGrades(): Promise<GradeEntity[]> {
-    const data = await this.grade.findMany();
+    const data = await this.grade.findMany({
+      orderBy: [{ code: 'asc' }, { section: 'asc' }],
+    });
     return data as unknown as GradeEntity[];
   }
 

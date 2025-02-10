@@ -1,3 +1,4 @@
+import { Type } from 'class-transformer';
 import {
   IsDateString,
   IsNumber,
@@ -12,6 +13,7 @@ export class CreateGradeDto {
   @IsPositive()
   @Min(1)
   @Max(12)
+  @Type(() => Number)
   grade: number;
 
   @IsString()
@@ -31,7 +33,7 @@ export class CreateStudentRequestDto extends CreateGradeDto {
   motherName: string;
 
   @IsDateString()
-  admisiontDate: string;
+  admissionDate: string;
 }
 
 export class GetStudentRequestDto {

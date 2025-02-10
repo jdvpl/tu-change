@@ -1,7 +1,9 @@
+import { RouterProvider } from "react-router-dom"
+import { router } from "./shared/router/router"
 
 const TuChangeApp = () => {
   return (
-    <div className="text-blue-400">TuChangeApp</div>
+    <RouterProvider router={router}/>
   )
 }
 

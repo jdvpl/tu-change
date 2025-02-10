@@ -1,3 +1,15 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.select-container button i {
+  color: #89a3b5 !important;
+}
+
+.select-container input {
+  cursor: pointer !important;
+}
+
+.label-with-value label {
+  color: #496374 !important;
+}
